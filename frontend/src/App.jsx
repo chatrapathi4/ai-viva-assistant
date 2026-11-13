@@ -4,6 +4,7 @@ import DashboardLayout from './layouts/DashboardLayout'
 import FacultyDashboard from './pages/faculty/FacultyDashboard'
 import FacultyCourses from './pages/faculty/FacultyCourses'
 import FacultyStudents from './pages/faculty/FacultyStudents'
+import QuestionGenerator from './pages/faculty/QuestionGenerator'
 import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
 import AuthPage from './pages/AuthPage'
@@ -51,7 +52,7 @@ export default function App() {
           <Route path="/faculty" element={<FacultyDashboard />} />
           <Route path="/faculty/courses" element={<FacultyCourses />} />
           <Route path="/faculty/students" element={<FacultyStudents />} />
-          <Route path="/faculty/assessments" element={<ComingSoon />} />
+          <Route path="/faculty/assessments" element={<QuestionGenerator />} />
           <Route path="/faculty/results" element={<ComingSoon />} />
         </Route>
       </Route>
