@@ -12,6 +12,7 @@ import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
 import StudentResults from './pages/student/StudentResults'
 import StudentProgress from './pages/student/StudentProgress'
+import PracticeQuizzes from './pages/student/PracticeQuizzes'
 import VoiceViva from './pages/student/VoiceViva'
 import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -71,7 +72,7 @@ export default function App() {
           <Route path="/student/vivas" element={<StudentVivas />} />
           <Route path="/student/vivas/:assignmentId" element={<VoiceViva />} />
           <Route path="/student/results" element={<StudentResults />} />
-          <Route path="/student/quizzes" element={<ComingSoon />} />
+          <Route path="/student/quizzes" element={<PracticeQuizzes />} />
           <Route path="/student/progress" element={<StudentProgress />} />
         </Route>
       </Route>

@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     GROQ_MODEL: str = "openai/gpt-oss-20b"
     SUPABASE_URL: str
     SUPABASE_PUBLISHABLE_KEY: str
+    SUPABASE_SECRET_KEY: str
     FRONTEND_URL: str = "http://localhost:5173"
 
     model_config = SettingsConfigDict(
