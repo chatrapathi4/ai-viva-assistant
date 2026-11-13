@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useState,
+  useRef,
 } from 'react'
 import { supabase } from '../lib/supabase'
 
@@ -14,12 +15,18 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const loadedUserId = useRef(null)
 
   useEffect(() => {
     let active = true
 
     async function loadUser(authUser) {
       if (!active) return
+      if (authUser && loadedUserId.current === authUser.id) {
+            return
+        }
+
+        loadedUserId.current = authUser?.id ?? null
 
       setLoading(true)
       setError('')

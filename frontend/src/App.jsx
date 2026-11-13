@@ -3,6 +3,8 @@ import { Navigate, Route, Routes } from 'react-router'
 import DashboardLayout from './layouts/DashboardLayout'
 import FacultyDashboard from './pages/faculty/FacultyDashboard'
 import StudentDashboard from './pages/student/StudentDashboard'
+import FacultyCourses from './pages/faculty/FacultyCourses'
+import StudentCourses from './pages/student/StudentCourses'
 import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth } from './context/AuthContext'
@@ -46,7 +48,7 @@ export default function App() {
       <Route element={<ProtectedRoute role="faculty" />}>
         <Route element={<DashboardLayout />}>
           <Route path="/faculty" element={<FacultyDashboard />} />
-          <Route path="/faculty/courses" element={<ComingSoon />} />
+          <Route path="/faculty/courses" element={<FacultyCourses />} />
           <Route path="/faculty/students" element={<ComingSoon />} />
           <Route path="/faculty/assessments" element={<ComingSoon />} />
           <Route path="/faculty/results" element={<ComingSoon />} />
@@ -56,7 +58,7 @@ export default function App() {
       <Route element={<ProtectedRoute role="student" />}>
         <Route element={<DashboardLayout />}>
           <Route path="/student" element={<StudentDashboard />} />
-          <Route path="/student/courses" element={<ComingSoon />} />
+          <Route path="/student/courses" element={<StudentCourses />} />
           <Route path="/student/vivas" element={<ComingSoon />} />
           <Route path="/student/quizzes" element={<ComingSoon />} />
           <Route path="/student/progress" element={<ComingSoon />} />
