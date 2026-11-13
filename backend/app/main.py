@@ -7,6 +7,8 @@ from app.api.questions import router as questions_router
 
 from app.api.voice import router as voice_router
 
+from app.api.results import router as results_router
+
 
 app = FastAPI(
     title="VivaAI API",
@@ -18,12 +20,13 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.FRONTEND_URL],
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
 
 app.include_router(questions_router)
 app.include_router(voice_router)
+app.include_router(results_router)
 
 
 @app.get("/")

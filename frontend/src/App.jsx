@@ -4,11 +4,13 @@ import DashboardLayout from './layouts/DashboardLayout'
 import FacultyDashboard from './pages/faculty/FacultyDashboard'
 import FacultyCourses from './pages/faculty/FacultyCourses'
 import FacultyStudents from './pages/faculty/FacultyStudents'
+import FacultyResults from './pages/faculty/FacultyResults'
 import QuestionGenerator from './pages/faculty/QuestionGenerator'
 import VivaScheduling from './pages/faculty/VivaScheduling'
 import StudentVivas from './pages/student/StudentVivas'
 import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
+import StudentResults from './pages/student/StudentResults'
 import VoiceViva from './pages/student/VoiceViva'
 import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -57,7 +59,7 @@ export default function App() {
           <Route path="/faculty/students" element={<FacultyStudents />} />
           <Route path="/faculty/assessments" element={<QuestionGenerator />} />
           <Route path="/faculty/schedule" element={<VivaScheduling />} />
-          <Route path="/faculty/results" element={<ComingSoon />} />
+          <Route path="/faculty/results" element={<FacultyResults />} />
         </Route>
       </Route>
 
@@ -67,6 +69,7 @@ export default function App() {
           <Route path="/student/courses" element={<StudentCourses />} />
           <Route path="/student/vivas" element={<StudentVivas />} />
           <Route path="/student/vivas/:assignmentId" element={<VoiceViva />} />
+          <Route path="/student/results" element={<StudentResults />} />
           <Route path="/student/quizzes" element={<ComingSoon />} />
           <Route path="/student/progress" element={<ComingSoon />} />
         </Route>

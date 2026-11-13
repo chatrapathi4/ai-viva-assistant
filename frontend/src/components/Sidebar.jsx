@@ -10,6 +10,7 @@ import {
   GraduationCap,
   X,
   CalendarClock,
+  Award,
 } from 'lucide-react'
 
 const facultyLinks = [
@@ -27,6 +28,7 @@ const studentLinks = [
   { name: 'My Vivas', path: '/student/vivas', icon: Mic },
   { name: 'Practice Quizzes', path: '/student/quizzes', icon: ClipboardList },
   { name: 'My Progress', path: '/student/progress', icon: BarChart3 },
+  { name: 'My Results', path: '/student/results', icon: Award },
 ]
 
 export default function Sidebar({ role, open, onClose }) {
