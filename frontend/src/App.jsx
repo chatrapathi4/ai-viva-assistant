@@ -2,8 +2,9 @@
 import { Navigate, Route, Routes } from 'react-router'
 import DashboardLayout from './layouts/DashboardLayout'
 import FacultyDashboard from './pages/faculty/FacultyDashboard'
-import StudentDashboard from './pages/student/StudentDashboard'
 import FacultyCourses from './pages/faculty/FacultyCourses'
+import FacultyStudents from './pages/faculty/FacultyStudents'
+import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
 import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -49,7 +50,7 @@ export default function App() {
         <Route element={<DashboardLayout />}>
           <Route path="/faculty" element={<FacultyDashboard />} />
           <Route path="/faculty/courses" element={<FacultyCourses />} />
-          <Route path="/faculty/students" element={<ComingSoon />} />
+          <Route path="/faculty/students" element={<FacultyStudents />} />
           <Route path="/faculty/assessments" element={<ComingSoon />} />
           <Route path="/faculty/results" element={<ComingSoon />} />
         </Route>
