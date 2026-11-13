@@ -9,6 +9,7 @@ import VivaScheduling from './pages/faculty/VivaScheduling'
 import StudentVivas from './pages/student/StudentVivas'
 import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
+import VoiceViva from './pages/student/VoiceViva'
 import AuthPage from './pages/AuthPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth } from './context/AuthContext'
@@ -65,6 +66,7 @@ export default function App() {
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/student/courses" element={<StudentCourses />} />
           <Route path="/student/vivas" element={<StudentVivas />} />
+          <Route path="/student/vivas/:assignmentId" element={<VoiceViva />} />
           <Route path="/student/quizzes" element={<ComingSoon />} />
           <Route path="/student/progress" element={<ComingSoon />} />
         </Route>

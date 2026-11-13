@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { CalendarClock, Clock3, Mic, BookOpen } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../context/AuthContext'
@@ -137,17 +138,25 @@ export default function StudentVivas() {
                   </p>
                 </div>
 
-                <button
-                  disabled
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-on-primary opacity-60"
-                >
-                  <Mic size={19} />
-                  {status === 'Upcoming'
-                    ? 'Not Started Yet'
-                    : status === 'Available'
-                      ? 'Voice Viva — Coming in Step 7B'
+                {status === 'Available' ? (
+                  <Link
+                    to={`/student/vivas/${item.id}`}
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-on-primary hover:bg-primary-hover"
+                  >
+                    <Mic size={19} />
+                    Start Voice Viva
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-on-primary opacity-60"
+                  >
+                    <Mic size={19} />
+                    {status === 'Upcoming'
+                      ? 'Not Started Yet'
                       : 'Viva Unavailable'}
-                </button>
+                  </button>
+                )}
               </div>
             )
           })}

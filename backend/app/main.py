@@ -5,6 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.questions import router as questions_router
 
+from app.api.voice import router as voice_router
+
+
 app = FastAPI(
     title="VivaAI API",
     description="AI-powered viva and interview backend",
@@ -20,6 +23,7 @@ app.add_middleware(
 )
 
 app.include_router(questions_router)
+app.include_router(voice_router)
 
 
 @app.get("/")
