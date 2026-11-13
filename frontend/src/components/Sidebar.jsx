@@ -9,6 +9,7 @@ import {
   Mic,
   GraduationCap,
   X,
+  CalendarClock,
 } from 'lucide-react'
 
 const facultyLinks = [
@@ -16,6 +17,7 @@ const facultyLinks = [
   { name: 'Courses', path: '/faculty/courses', icon: BookOpen },
   { name: 'Students & Batches', path: '/faculty/students', icon: Users },
   { name: 'Assessments', path: '/faculty/assessments', icon: ClipboardList },
+    { name: 'Viva Scheduling', path: '/faculty/schedule', icon: CalendarClock },
   { name: 'Results', path: '/faculty/results', icon: BarChart3 },
 ]
 

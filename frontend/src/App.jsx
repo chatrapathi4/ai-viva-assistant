@@ -5,6 +5,8 @@ import FacultyDashboard from './pages/faculty/FacultyDashboard'
 import FacultyCourses from './pages/faculty/FacultyCourses'
 import FacultyStudents from './pages/faculty/FacultyStudents'
 import QuestionGenerator from './pages/faculty/QuestionGenerator'
+import VivaScheduling from './pages/faculty/VivaScheduling'
+import StudentVivas from './pages/student/StudentVivas'
 import StudentDashboard from './pages/student/StudentDashboard'
 import StudentCourses from './pages/student/StudentCourses'
 import AuthPage from './pages/AuthPage'
@@ -53,6 +55,7 @@ export default function App() {
           <Route path="/faculty/courses" element={<FacultyCourses />} />
           <Route path="/faculty/students" element={<FacultyStudents />} />
           <Route path="/faculty/assessments" element={<QuestionGenerator />} />
+          <Route path="/faculty/schedule" element={<VivaScheduling />} />
           <Route path="/faculty/results" element={<ComingSoon />} />
         </Route>
       </Route>
@@ -61,7 +64,7 @@ export default function App() {
         <Route element={<DashboardLayout />}>
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/student/courses" element={<StudentCourses />} />
-          <Route path="/student/vivas" element={<ComingSoon />} />
+          <Route path="/student/vivas" element={<StudentVivas />} />
           <Route path="/student/quizzes" element={<ComingSoon />} />
           <Route path="/student/progress" element={<ComingSoon />} />
         </Route>
