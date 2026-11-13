@@ -1,14 +1,26 @@
 
 import { useState } from 'react'
-import { Link, Outlet, useLocation } from 'react-router'
-import { Menu, Moon, Sun, Bell } from 'lucide-react'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router'
+import { Menu, Moon, Sun, Bell, LogOut } from 'lucide-react'
 import Sidebar from '../components/Sidebar'
 import { useTheme } from '../context/ThemeContext'
+import { useAuth } from '../context/AuthContext'
 
 export default function DashboardLayout() {
   const { dark, setDark } = useTheme()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const location = useLocation()
+  const { signOut, profile } = useAuth()
+    const navigate = useNavigate()
+
+    async function handleLogout() {
+    try {
+        await signOut()
+        navigate('/login', { replace: true })
+    } catch (error) {
+        alert(error.message)
+    }
+    }
 
   const role = location.pathname.startsWith('/faculty')
     ? 'faculty'
@@ -44,12 +56,9 @@ export default function DashboardLayout() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              to={role === 'faculty' ? '/student' : '/faculty'}
-              className="rounded-lg border border-border px-3 py-2 text-xs font-medium hover:bg-soft"
-            >
-              Switch Portal
-            </Link>
+            <span className="hidden text-sm text-muted sm:inline">
+                 {profile?.full_name}
+            </span>
 
             <button
               onClick={() => setDark(!dark)}
@@ -65,6 +74,14 @@ export default function DashboardLayout() {
               disabled
             >
               <Bell size={20} />
+            </button>
+            <button
+                onClick={handleLogout}
+                className="rounded-lg p-2 hover:bg-soft"
+                aria-label="Sign out"
+                title="Sign out"
+                >
+                <LogOut size={20} />
             </button>
           </div>
         </header>

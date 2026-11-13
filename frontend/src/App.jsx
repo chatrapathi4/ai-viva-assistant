@@ -3,6 +3,9 @@ import { Navigate, Route, Routes } from 'react-router'
 import DashboardLayout from './layouts/DashboardLayout'
 import FacultyDashboard from './pages/faculty/FacultyDashboard'
 import StudentDashboard from './pages/student/StudentDashboard'
+import AuthPage from './pages/AuthPage'
+import ProtectedRoute from './components/ProtectedRoute'
+import { useAuth } from './context/AuthContext'
 
 function ComingSoon() {
   return (
@@ -15,23 +18,49 @@ function ComingSoon() {
   )
 }
 
+function HomeRedirect() {
+  const { user, profile, loading } = useAuth()
+
+  if (loading) {
+    return <div className="p-8 text-muted">Loading...</div>
+  }
+
+  if (!user || !profile) {
+    return <Navigate to="/login" replace />
+  }
+
+  return (
+    <Navigate
+      to={profile.role === 'faculty' ? '/faculty' : '/student'}
+      replace
+    />
+  )
+}
+
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/student" replace />} />
+      <Route path="/" element={<HomeRedirect />} />
+      <Route path="/login" element={<AuthPage />} />
 
-      <Route element={<DashboardLayout />}>
-        <Route path="/faculty" element={<FacultyDashboard />} />
-        <Route path="/faculty/courses" element={<ComingSoon />} />
-        <Route path="/faculty/students" element={<ComingSoon />} />
-        <Route path="/faculty/assessments" element={<ComingSoon />} />
-        <Route path="/faculty/results" element={<ComingSoon />} />
+      <Route element={<ProtectedRoute role="faculty" />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="/faculty" element={<FacultyDashboard />} />
+          <Route path="/faculty/courses" element={<ComingSoon />} />
+          <Route path="/faculty/students" element={<ComingSoon />} />
+          <Route path="/faculty/assessments" element={<ComingSoon />} />
+          <Route path="/faculty/results" element={<ComingSoon />} />
+        </Route>
+      </Route>
 
-        <Route path="/student" element={<StudentDashboard />} />
-        <Route path="/student/courses" element={<ComingSoon />} />
-        <Route path="/student/vivas" element={<ComingSoon />} />
-        <Route path="/student/quizzes" element={<ComingSoon />} />
-        <Route path="/student/progress" element={<ComingSoon />} />
+      <Route element={<ProtectedRoute role="student" />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/student/courses" element={<ComingSoon />} />
+          <Route path="/student/vivas" element={<ComingSoon />} />
+          <Route path="/student/quizzes" element={<ComingSoon />} />
+          <Route path="/student/progress" element={<ComingSoon />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
